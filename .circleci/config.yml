@@ -6,7 +6,7 @@ orbs:
 jobs:
   test:
     machine: true
-    resource_class: athakkar9033/newcircleci
+    resource_class: athakkar9033/devops
     description: Setup and run application test
     steps:
       - checkout
@@ -28,7 +28,7 @@ jobs:
           path: C:\Users\circleci\project\test_coverage
   build:
     machine: true
-    resource_class: athakkar9033/newcircleci
+    resource_class: athakkar9033/devops
     description: Build application with Release configuration
     steps:
       - checkout
