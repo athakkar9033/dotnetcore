@@ -1,44 +1,11 @@
 version: 2.1
-
-orbs:
-  windows: circleci/windows@2.2.0
-
-jobs:
-  test:
-    machine: true
-    resource_class: athakkar9033/devops
-    description: Setup and run application test
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - dotnet-packages-v1-{{ checksum "dotnet/dotnet.csproj" }}
-      - run:
-          name: "Install project dependencies"
-          command: dotnet.exe restore
-      - save_cache:
-          paths:
-            - C:\Users\circleci\.nuget\packages
-          key: dotnet-packages-v1-{{ checksum "dotnet/dotnet.csproj" }}
-      
-      - run:
-          name: "Print Working Directory"
-          command: pwd
-      - store_artifacts:
-          path: C:\Users\circleci\project\test_coverage
-  build:
-    machine: true
-    resource_class: athakkar9033/devops
-    description: Build application with Release configuration
-    steps:
-      - checkout
-      - run:
-          name: "Build Application according to some given configuration"
-          command: dotnet.exe build --configuration Release
 workflows:
-  test_and_build:
+  testing:
     jobs:
-      - test
-      - build:
-          requires:
-            - test
+      - runner-test
+jobs:
+  runner-test:
+    machine: true
+    resource_class: athakkar9033/devops
+    steps:
+      - run: echo "Hi I'm on Runners!"
