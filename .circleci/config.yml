@@ -8,7 +8,8 @@ jobs:
     machine: true
     resource_class: athakkar9033/selfcircleci
     description: Setup and run application tests
-    
+    executor:
+      name: windows/default
     steps:
       - checkout
       - restore_cache:
@@ -31,7 +32,8 @@ jobs:
     machine: true
     resource_class: athakkar9033/selfcircleci
     description: Build application with Release configuration
-    
+    executor:
+      name: windows/default
     steps:
       - checkout
       - run:
