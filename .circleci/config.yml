@@ -6,6 +6,6 @@ workflows:
 jobs:
   runner-test:
     machine: true
-    resource_class: athakkar9033/devops
+    resource_class: athakkar9033/devops_circleci
     steps:
       - run: echo "Hi I'm on Runners!"
